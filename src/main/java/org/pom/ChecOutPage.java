@@ -47,12 +47,27 @@ private WebElement orderPlacedSuccessMessage;
 private WebElement backHomeButton;
 
 
+@FindBy(xpath="//div[@class='summary_subtotal_label']//following::div[@class='summary_total_label' and text()]")
+private WebElement totalWithTax;
+
+
+
+@FindBy(xpath="//div[@class='summary_subtotal_label']//following::div[@class='summary_tax_label' and contains(text(),'Tax')]")
+private WebElement tax;
+
+
 @FindBys({@FindBy(xpath="//div[@class='cart_item']//following::a[@id]")})
 private List<WebElement> cartProducts;
 
 
 @FindBys({@FindBy(xpath="//div[@class='cart_item_label']//following::div[@class='inventory_item_price']")})
 private List<WebElement> cartProductsPrice;
+
+
+
+public WebElement getTax() {
+	return tax;
+}
 
 
 
@@ -112,6 +127,12 @@ public WebElement getCheckOutButton() {
 
 public WebElement getItemTotalPrice() {
 	return itemTotalPrice;
+}
+
+
+
+public WebElement getTotalWithTax() {
+	return totalWithTax;
 }
 
 

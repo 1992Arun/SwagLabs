@@ -45,7 +45,7 @@ Then Verify user is navigated to products page
 
 When Click on "AddToCart" button for "Sauce Labs Fleece Jacket" product
 
-Then Verify "AddToCart" is enabled for "Sauce Labs Fleece Jacket" product
+Then Verify "AddToCart" is disabled for "Sauce Labs Fleece Jacket" product
 
 
 
@@ -81,7 +81,7 @@ And Click on "BackHome" button
 
 
 @VerifyCartPrice
-Scenario: Verify Cart Total price of the cart
+Scenario: Verify Sum of Cart 
 
 When Copy the "standard_user" username and password
 
@@ -109,13 +109,15 @@ When Click on "Continue" button
 
 Then Verify sum of all products is equal to total price
 
+Then Verify sum of all products and tax is equal to total price
+
 And Click on "Finish" button
 
 Then Verify "Thank you for your order!" is diplayed
 
 
-@VerifyProductsPage
-Scenario: Verify Cart Total price of the cart
+@RemoveCartItem
+Scenario: Verify AddToCart is enabled
 
 When Copy the "standard_user" username and password
 
@@ -160,4 +162,101 @@ And Click on "ContinueShoping" button
 Then Verify "AddToCart" is disabled for "all" product
 
 
+@VerifyCartProduct
+Scenario: Verify cart persistence after logout/login
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password and entered
+
+When Click on "Login" button
+
+Then Verify user is navigated to products page
+
+When Click on "AddToCart" button
+
+And Click on "menu" button
+
+And Click on "Logout" button
+
+And Copy the "standard_user" username and password
+
+And Click on "Login" button
+
+And Click on "Cart" button
+
+Then Verify All products are available in the cart
+
+
+@DirectCartPage
+Scenario: Direct access to cart without login
+
+When Open application Cart URL "https://www.saucedemo.com/cart.html"
+
+Then Verify Redirect to login page and error message "Epic sadface: You can only access '/cart.html' when you are logged in." displayed
+
+
+@SortFeatureA2Z
+Scenario: Verify sort dropdown works (A-Z)
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password and entered
+
+When Click on "Login" button
+
+When Click on "Sort" button
+
+And Select "Name (A to Z)" from sort dropdown
+
+Then Verify products are sorted "Name (A to Z)" 
+
+
+
+@SortFeatureZ2A
+Scenario: Verify sort dropdown works (A-Z)
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password and entered
+
+When Click on "Login" button
+
+When Click on "Sort" button
+
+And Select "Name (Z to A)" from sort dropdown
+
+Then Verify products are sorted "Name (Z to A)" 
+
+
+@SortFeaturePriceL2H
+Scenario: Verify sort dropdown works (A-Z)
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password and entered
+
+When Click on "Login" button
+
+When Click on "Sort" button
+
+And Select "Price (low to high)" from sort dropdown
+
+Then Verify products are sorted "Price (low to high)" 
+
+
+@SortFeaturePriceH2L
+Scenario: Verify sort dropdown works (A-Z)
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password and entered
+
+When Click on "Login" button
+
+When Click on "Sort" button
+
+And Select "Price (high to low)" from sort dropdown
+
+Then Verify products are sorted "Price (high to low)" 
 

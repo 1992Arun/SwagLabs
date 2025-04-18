@@ -17,6 +17,12 @@ public class LoginPagePOM extends BaseClass {
 	@FindBy(xpath="//div[@class='login-box']//descendant::input[@id='user-name']")
 	private WebElement userName;
 	
+	@FindBy(xpath="//div[@class='primary_header']//descendant::button[@id='react-burger-menu-btn']")
+	private WebElement menuButton;
+	
+	@FindBy(xpath="//nav[@class='bm-item-list']//descendant::a[@id='logout_sidebar_link']")
+	private WebElement logoutButton;
+	
 	@FindBy(xpath="//div[@id='shopping_cart_container']//child::span[@class='shopping_cart_badge']")
 	private WebElement numberOfProductsInCart;
 	
@@ -28,6 +34,9 @@ public class LoginPagePOM extends BaseClass {
 	
 	@FindBy(xpath="//div[@class='login-box']//descendant::input[@id='login-button']")
 	private WebElement loginButton;
+	
+	@FindBy(xpath="//select[@class='product_sort_container']")
+	private WebElement sortButton;
 	
 	@FindBy(xpath="//div[@class='login_password']/text()[normalize-space()]")
 	private WebElement passwordtext;
@@ -82,6 +91,11 @@ public class LoginPagePOM extends BaseClass {
 	}
 
 
+	public WebElement getSortButton() {
+		return sortButton;
+	}
+
+
 	public WebElement getLoginErroMessage() {
 		return loginErroMessage;
 	}
@@ -89,6 +103,16 @@ public class LoginPagePOM extends BaseClass {
 
 	public WebElement getPasswordtext() {
 		return passwordtext;
+	}
+
+
+	public WebElement getMenuButton() {
+		return menuButton;
+	}
+
+
+	public WebElement getLogoutButton() {
+		return logoutButton;
 	}
 
 	

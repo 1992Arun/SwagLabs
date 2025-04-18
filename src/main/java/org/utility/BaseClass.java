@@ -40,7 +40,7 @@ public class BaseClass {
 	
 	public static List<String> productname;
 	
-	public static List<String> productPrice;
+	public static List<Double> productPrice;
 	
 	public static ChecOutPage checkout;
 	

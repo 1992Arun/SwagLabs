@@ -1,5 +1,7 @@
 package org.step;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Assert;
@@ -98,39 +100,39 @@ public class LoginPage extends BaseClass {
 
 				//click(addToCartButton.get(i));
 
-			
-			click(p.productAddToCart(getText(listOfProducts.get(i))));
+
+				click(p.productAddToCart(getText(listOfProducts.get(i))));
 
 				productname.add(getText(listOfProducts.get(i)));
 
-				productPrice.add(getText(listOfProductsprice.get(i)).substring(1));
+				productPrice.add(Double.valueOf(getText(listOfProductsprice.get(i)).substring(1)));
 
-				
+
 
 			}
 
 		}
 
 		else if (string.equalsIgnoreCase("Remove")) {
-			
+
 			List<WebElement> listOfCartProducts = p.getListOfCartProducts();
- 
-			
+
+
 			for (int i = listOfCartProducts.size() - 1; i >= 0; i--) {
-				
-//				listOfCartProducts = p.getListOfCartProducts();
-				
-			
-	
-			click(p.productRemove(getText(listOfCartProducts.get(i))));
+
+				//				listOfCartProducts = p.getListOfCartProducts();
+
+
+
+				click(p.productRemove(getText(listOfCartProducts.get(i))));
 
 			}
-			
-			
+
+
 		}
 
 		else if (string.equalsIgnoreCase("Cart")) {
-			
+
 			sleep(4);
 
 			click(webDriverWait(5, p.getCartButton()));
@@ -183,6 +185,24 @@ public class LoginPage extends BaseClass {
 		}
 
 
+		else if (string.equalsIgnoreCase("menu")) {
+
+			click(l.getMenuButton());
+
+		}
+
+		else if (string.equalsIgnoreCase("Logout")) {
+
+			click(l.getLogoutButton());
+
+		}
+
+		else if (string.equalsIgnoreCase("Sort")) {
+
+			click(l.getSortButton());
+
+		}
+
 	}
 
 	@Then("Verify all products are added in cart")
@@ -196,7 +216,7 @@ public class LoginPage extends BaseClass {
 
 			Assert.assertTrue(getText(cartProducts.get(i)).contains(productname.get(i)));
 
-			Assert.assertTrue(getText(cartProductsPrice.get(i)).contains(productPrice.get(i)));
+			Assert.assertTrue(Double.valueOf(getText(cartProductsPrice.get(i)).substring(1))==productPrice.get(i));
 
 			String text = getText(cartProductsPrice.get(i));
 
@@ -257,8 +277,6 @@ public class LoginPage extends BaseClass {
 
 			Assert.assertTrue(p.getRemoveButtonInCart().isDisplayed());
 
-
-
 		}
 
 
@@ -311,22 +329,22 @@ public class LoginPage extends BaseClass {
 
 	@When("Click on {string} button for {string} product")
 	public void click_on_button_for_product(String string, String string2) {
-		
+
 		try {
 
-		if (string.equalsIgnoreCase("AddToCart")) {
+			if (string.equalsIgnoreCase("AddToCart")) {
 
-			
-			click(p.productAddToCart(string2));
-			
-		}
-		
+
+				click(p.productAddToCart(string2));
+
+			}
+
 		}catch(Exception e ) {
-			
+
 			System.out.println("Button is not displayed");
-			
+
 		}
-		
+
 	}
 
 
@@ -341,13 +359,31 @@ public class LoginPage extends BaseClass {
 
 	}
 
+	@Then("Verify {string} is disabled for {string} product")
+	public void verify_is_disabled_for_product(String string, String string2) {
+
+		if(string2.equalsIgnoreCase("Sauce Labs Fleece Jacket")) {
+
+			try {
+
+				Assert.assertTrue(!p.productAddToCart(string2).isEnabled());
+
+			} catch(Exception e) {
+
+				Assert.assertTrue(false);
+
+			}
+
+		}
+
+	}
+
+
 	@Then("Verify {string} is enabled for {string} product")
 	public void verify_is_enabled_for_product(String string, String string2) {
 
 		if(string.equalsIgnoreCase("AddToCart")) {
-			
 
-				
 			try {
 
 				Assert.assertTrue(p.productAddToCart(string2).isEnabled());
@@ -358,15 +394,13 @@ public class LoginPage extends BaseClass {
 
 			}
 
-	
+
 
 		}
 
-		
+
 		else if(string.equalsIgnoreCase("AddToCart")) {
-			
 
-			
 			try {
 
 				Assert.assertTrue(p.productAddToCart(string2).isEnabled());
@@ -377,13 +411,231 @@ public class LoginPage extends BaseClass {
 
 			}
 
-	
+
 
 		}
 
-		
+
 	}
 
 
+	@Then("Verify sum of all products and tax is equal to total price")
+	public void verify_sum_of_all_products_and_tax_is_equal_to_total_price() {
+
+		String[] split2 = getText(checkout.getTotalWithTax()).split(" ");
+
+		split2[1].substring(1);
+
+		System.out.println(split2[1].substring(1));
+
+		Double total = Double.valueOf(split2[1].substring(1));
+
+		String[] split = getText(checkout.getTax()).split(" ");
+
+		String tax1 =split[1].substring(1);
+
+		Double tax = Double.valueOf(tax1);
+
+		System.out.println("Tax :"+tax);
+
+		String[] split1 = getText(checkout.getItemTotalPrice()).split(" ");
+
+		split1[2].substring(1);
+
+		Double sum = Double.valueOf(split1[2].substring(1));
+
+		Double temp = 0.00;
+
+		for (int i = 0; i < productPrice.size(); i++) {
+
+			temp = temp + Double.valueOf(productPrice.get(i));
+
+		}
+
+		Assert.assertEquals(sum, temp, 0.01);
+
+		System.out.println("total: "+ total);
+
+		Assert.assertEquals(total, temp+tax, 0.01);
+
+	}
+
+	@Then("Verify All products are available in the cart")
+	public void verify_All_products_are_available_in_the_cart() {
+
+		List<WebElement> cartProducts = checkout.getCartProducts();
+
+		List<WebElement> cartProductsPrice = checkout.getCartProductsPrice();
+
+		for (int i = 0; i < productname.size(); i++) {
+
+			Assert.assertTrue(getText(cartProducts.get(i)).contains(productname.get(i)));
+
+			Assert.assertTrue(Double.valueOf(getText(cartProductsPrice.get(i)).substring(1))==productPrice.get(i));
+
+			String text = getText(cartProductsPrice.get(i));
+
+			String split = text.substring(1);
+
+		}
+
+
+	}
+
+
+	@When("Open application Cart URL {string}")
+	public void open_application_Cart_URL(String string) {
+
+		launchURL(string);
+
+	}
+
+	@Then("Verify Redirect to login page and error message {string} displayed")
+	public void verify_Redirect_to_login_page_and_error_message_displayed(String string) {
+
+		Assert.assertTrue(l.getLoginButton().isDisplayed());
+
+		Assert.assertTrue(getText(l.getLoginErroMessage()).contains(string));
+
+	}
+
+
+	@When("Select {string} from sort dropdown")
+	public void select_from_sort_dropdown(String string) {
+
+		if(string.equalsIgnoreCase("Name (A to Z)")) {
+
+			selectByText(l.getSortButton(), string);
+		} 
+
+		else if (string.equalsIgnoreCase("Name (Z to A)")) {
+
+			selectByText(l.getSortButton(), string);
+		} 
+		
+		else if (string.equalsIgnoreCase("Price (low to high)")) {
+
+			selectByText(l.getSortButton(), string);
+		} 
+
+		else if (string.equalsIgnoreCase("Price (high to low)")) {
+
+			selectByText(l.getSortButton(), string);
+		} 
+
+
+	}
+
+
+	@Then("Verify products are sorted {string}")
+	public void verify_products_are_sorted(String string) {
+
+		if(string.equalsIgnoreCase("Name (A to Z)")) {
+
+
+			List<WebElement> listOfProducts = p.getListOfProducts();
+
+			numberOfProducts =6;
+
+			for (int i = 0; i < numberOfProducts; i++) {
+
+				productname.add(getText(listOfProducts.get(i)));
+			}
+
+			System.out.println(productname);
+
+			List<String> expected = new ArrayList(productname);
+
+			Collections.sort(expected);
+
+			System.out.println(expected);
+
+			Assert.assertTrue(productname.equals(expected));
+
+
+
+		} else if(string.equalsIgnoreCase("Name (Z to A)")) {
+
+
+			List<WebElement> listOfProducts = p.getListOfProducts();
+
+			numberOfProducts =6;
+
+			for (int i = 0; i < numberOfProducts; i++) {
+
+				productname.add(getText(listOfProducts.get(i)));
+			}
+
+			System.out.println(productname);
+
+			List<String> expected = new ArrayList(productname);
+
+			expected.sort(Collections.reverseOrder());
+
+			System.out.println(expected);
+
+			Assert.assertTrue(productname.equals(expected));
+
+
+
+		}
+
+
+		else if(string.equalsIgnoreCase("Price (high to low)")) {
+
+
+			List<WebElement> listOfProductsprice = p.getListOfProductsprice();
+
+			numberOfProducts =6;
+
+			for (int i = 0; i < numberOfProducts; i++) {
+
+				productPrice.add(Double.valueOf(getText(listOfProductsprice.get(i)).substring(1)));
+			}
+
+			System.out.println(productPrice);
+
+			List<String> expected = new ArrayList(productPrice);
+
+			expected.sort(Collections.reverseOrder());
+
+			System.out.println(expected);
+
+			Assert.assertTrue(productPrice.equals(expected));
+
+
+
+		}
+		
+		if(string.equalsIgnoreCase("Price (low to high)")) {
+
+
+			List<WebElement> listOfProductsprice = p.getListOfProductsprice();
+
+			numberOfProducts =6;
+
+			for (int i = 0; i < numberOfProducts; i++) {
+				
+				getText(listOfProductsprice.get(i)).substring(1);
+
+				productPrice.add(Double.valueOf(getText(listOfProductsprice.get(i)).substring(1)));
+			}
+
+			System.out.println(productPrice);
+
+			List<String> expected = new ArrayList(productPrice);
+
+			Collections.sort(expected);
+
+			System.out.println(expected);
+
+			Assert.assertTrue(productPrice.equals(expected));
+
+
+
+		}
+
+
+	}
 
 }
