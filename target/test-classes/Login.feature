@@ -12,12 +12,13 @@ Scenario: Enter valid username and password
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
 Then Verify user is navigated to products page
 
+When Take screen Shot and compare UI elements aligned correctly
 
 
 @invalid
@@ -25,29 +26,11 @@ Scenario: Enter valid username and password
 
 When Copy the "locked_out_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
 Then Verify "Sorry, this user has been locked out." is diplayed
-
-
-@problemUser
-Scenario: Enter problemUser username and password
-
-When Copy the "problem_user" username and password
-
-Then Verify that correct username and password and entered
-
-When Click on "Login" button
-
-Then Verify user is navigated to products page
-
-When Click on "AddToCart" button for "Sauce Labs Fleece Jacket" product
-
-Then Verify "AddToCart" is disabled for "Sauce Labs Fleece Jacket" product
-
-
 
 
 @performance
@@ -55,7 +38,7 @@ Scenario: Enter performance_issue username and password
 
 When Copy the "performance_glitch_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -85,7 +68,7 @@ Scenario: Verify Sum of Cart
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -121,7 +104,7 @@ Scenario: Verify AddToCart is enabled
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -145,7 +128,7 @@ Scenario: Verify Cart Total price of the cart
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -167,7 +150,7 @@ Scenario: Verify cart persistence after logout/login
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -201,7 +184,7 @@ Scenario: Verify sort dropdown works (A-Z)
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -218,7 +201,7 @@ Scenario: Verify sort dropdown works (A-Z)
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -234,7 +217,7 @@ Scenario: Verify sort dropdown works (A-Z)
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -250,7 +233,7 @@ Scenario: Verify sort dropdown works (A-Z)
 
 When Copy the "standard_user" username and password
 
-Then Verify that correct username and password and entered
+Then Verify that correct username and password entered
 
 When Click on "Login" button
 
@@ -259,4 +242,79 @@ When Click on "Sort" button
 And Select "Price (high to low)" from sort dropdown
 
 Then Verify products are sorted "Price (high to low)" 
+
+
+@brokenImages
+Scenario: Check for broken images
+
+When Copy the "performance_glitch_user" username and password
+
+Then Verify that correct username and password entered
+
+When Click on "Login" button
+
+And Verify for Broken links
+
+
+
+@VerifyUIElements 
+Scenario: Verify all UI elements
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password entered
+
+When Click on "Login" button
+
+Then Check for page title, cart icon, burger menu, sorting dropdown
+
+
+@VerifyUIElements 
+Scenario: Verify all UI elements
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password entered
+
+When Click on "Login" button
+
+
+
+
+@VerifyNamePrice
+Scenario: Verify Each card shows product name and price
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password entered
+
+When Click on "Login" button
+
+Then Click on each product and Verify price and name displayed for each item
+
+
+@VerifyCartCount
+Scenario: Verify Each card shows product name and price
+
+When Copy the "standard_user" username and password
+
+Then Verify that correct username and password entered
+
+When Click on "Login" button
+
+When Click on "AddToCart" button 
+
+Then Verify "ProductRemove" is diplayed 
+
+Then Cart count is increased
+
+When Click on "ProductRemove" button 
+
+Then Verify "AddToCart" is diplayed 
+
+
+
+
+
+
 

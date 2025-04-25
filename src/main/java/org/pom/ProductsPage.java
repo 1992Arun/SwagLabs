@@ -20,9 +20,30 @@ public class ProductsPage extends BaseClass {
 	@FindBy(xpath="//div[@id='header_container']//following::span[@data-test='title']")
 	private WebElement ProductsText;
 
+	@FindBy(xpath="//div[@class='header_secondary_container']//descendant::button[@id='back-to-products']")
+	private WebElement backToProductsButton;
+
+	
+	@FindBy(xpath="//div[@class='inventory_details_name large_size']//following::div[@class='inventory_details_price']")
+	private WebElement ProductPageProductPrice;
+
+	public WebElement getProductPageProductPrice() {
+		return ProductPageProductPrice;
+	}
+
+
+	@FindBy(xpath="//div[@class='inventory_details_desc_container']//child::div[@class='inventory_details_name large_size']")
+	private WebElement ProductPageProductName;
 	
 	@FindBy(xpath="//div[@class='cart_footer']//child::button[@id='continue-shopping']")
 	private WebElement continueShoping;
+	
+	@FindBys({@FindBy(xpath="//div[@class='pricebar']//following::button[text()]")})
+	private List<WebElement> RemoveFromProductList;
+	
+	@FindBy(xpath="//a[@class='shopping_cart_link']//child::span[text()]")
+	private WebElement cartCount;
+	
 
 	@FindBys({@FindBy(xpath="//div[@class='inventory_item_label']//following::button[text()='Add to cart']")})
 	private List<WebElement> addToCartButton;
@@ -64,7 +85,12 @@ public class ProductsPage extends BaseClass {
 	@FindBys({@FindBy(xpath="//div[@class='inventory_item']//following::div[@class='inventory_item_price']")})
 	private List<WebElement> listOfProductsprice;
 
+	@FindBys({@FindBy(xpath="//div[@class='cart_item_label']//following::div[@class='inventory_item_price']")})
+	private List<WebElement> listOfCartProductsprice;
 
+	public List<WebElement> getListOfCartProductsprice() {
+		return listOfCartProductsprice;
+	}
 
 	@FindBy(xpath="//div[@class='inventory_details_desc_container']//following::button")
 	private WebElement addToCartRemoveButton;
@@ -109,6 +135,12 @@ public class ProductsPage extends BaseClass {
 	}
 
 
+	
+
+	public List<WebElement> getRemoveFromProductList() {
+		return RemoveFromProductList;
+	}
+
 	public List<WebElement> getListOfCartProducts() {
 		return listOfCartProducts;
 	}
@@ -117,6 +149,10 @@ public class ProductsPage extends BaseClass {
 		return backToProducts;
 	}
 
+
+	public WebElement getBackToProductsButton() {
+		return backToProductsButton;
+	}
 
 	public List<WebElement> getListOfProducts() {
 		return listOfProducts;
@@ -130,6 +166,14 @@ public class ProductsPage extends BaseClass {
 
 	public List<WebElement> getListOfProductsprice() {
 		return listOfProductsprice;
+	}
+
+	public WebElement getProductPageProductName() {
+		return ProductPageProductName;
+	}
+
+	public WebElement getCartCount() {
+		return cartCount;
 	}
 
 

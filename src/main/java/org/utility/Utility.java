@@ -20,6 +20,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
+
+
 	public class Utility extends BaseClass{
 		
 		public static Sheet sheet;
@@ -30,8 +32,7 @@ import net.masterthought.cucumber.ReportBuilder;
 			
 			Properties p = new Properties();
 			
-			FileReader fr;
-		
+			FileReader fr;		
 			
 			try {
 				fr = new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\Config.properties");

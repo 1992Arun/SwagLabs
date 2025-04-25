@@ -1,7 +1,10 @@
 package org.step;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.pom.ChecOutPage;
@@ -35,7 +38,7 @@ public class HooksClass extends BaseClass {
 		
 	@After()
 	
-		public void tearDown(Scenario sc) {
+		public void tearDown(Scenario sc) throws IOException {
 		
 		if(sc.isFailed()) {
 			
@@ -45,10 +48,13 @@ public class HooksClass extends BaseClass {
 			
 			sc.embed(screenshotAs, "images/png");
 					
+			File screenshotAs2 = tk.getScreenshotAs(OutputType.FILE);
+			
+			FileUtils.copyFile(screenshotAs2, new File(System.getProperty("user.dir")+"\\src\\test\\resources\\FailedTestsScreenShots\\Failed.png"));
 			
 		}
 			
-		//	driver.quit();
+			driver.quit();
 		
 	}
 

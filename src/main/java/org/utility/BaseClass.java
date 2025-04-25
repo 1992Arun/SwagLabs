@@ -1,6 +1,9 @@
 package org.utility;
 
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -99,7 +102,7 @@ public class BaseClass {
 
 	//	}
 
-	public static void movetoElement(WebElement e) {
+	public static void moveToElement(WebElement e) {
 
 		Actions a = new Actions(driver);
 
@@ -254,11 +257,13 @@ public class BaseClass {
 	}
 
 
-	public static void selectByText(WebElement e, String value){
+	public static List<WebElement> selectByText(WebElement e, String value){
 
 		Select s = new Select(e);
 
 		s.selectByVisibleText(value);
+		
+		return s.getAllSelectedOptions();
 
 	}
 
@@ -374,6 +379,25 @@ public class BaseClass {
 
 		a.doubleClick();
 	}
+	
+	
+	public static void refersh()  {
+
+		Robot r = null;
+		try {
+			
+			r = new Robot();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		r.keyPress(KeyEvent.VK_F5);
+		
+		r.keyRelease(KeyEvent.VK_F5);
+
+		
+	}
 
 	public static void quit(){
 
@@ -434,9 +458,14 @@ public class BaseClass {
 		
 		Actions a = new Actions(driver);
 		
-		
 		a.click(e).sendKeys(Keys.BACK_SPACE).sendKeys(text).perform();
 		
+		
+	}
+	
+	public static String getPageTitle() {
+		
+		return driver.getTitle();
 		
 	}
 	

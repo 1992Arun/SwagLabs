@@ -74,7 +74,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>JvmReport</td>
-            <td>18 Apr 2025, 21:34</td>
+            <td>25 Apr 2025, 10:35</td>
     </tr>
   </tbody>
 </table>
@@ -127,19 +127,19 @@ $(document).ready(function() {
         <tbody>
         <tr>
           <td class="tagname">@E2E</td>
-          <td      class="passed"    >6</td>
+          <td      class="passed"    >4</td>
+          <td      class="failed"    >1</td>
           <td >0</td>
           <td >0</td>
           <td >0</td>
-          <td >0</td>
-          <td class="total">6</td>
+          <td class="total">5</td>
 
-          <td  class="passed"    >1</td>
           <td >0</td>
+          <td  class="failed"    >1</td>
           <td class="total">1</td>
 
-          <td class="duration" data-value="1365047700">1.365</td>
-          <td class="passed">Passed</td>
+          <td class="duration" data-value="1666809300">1.666</td>
+          <td class="failed">Failed</td>
         </tr>
         </tbody>
 
@@ -178,18 +178,18 @@ $(document).ready(function() {
 <div class="tags indention">
       <b>Tags:</b>
            <a href="report-tag_2149458199.html">@E2E</a>
-           <a href="report-tag_272825584.html">@SortFeaturePriceL2H</a>
+           <a href="report-tag_4091721659.html">@valid</a>
       </div>
 
   
-  <span class="lead-duration duration">1.365</span>
+  <span class="lead-duration duration">1.666</span>
 
 
-    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
+    <span data-toggle="collapse" class=" collapsable-control" data-target="#element-1">
     
-<div class="brief passed">
+<div class="brief failed">
   <span class="keyword indention">Scenario</span>
-  <span class="name">Verify sort dropdown works (A-Z)</span>
+  <span class="name">Enter valid username and password</span>
   
 
        <i class="chevron fa fa-fw"></i>
@@ -198,7 +198,7 @@ $(document).ready(function() {
   </span>
   <div class="description indention"></div>
 
-  <div id="element-1" class="collapse collapsable-details ">
+  <div id="element-1" class="collapse collapsable-details  in ">
     
 
   <div class="inner-level hooks-element-before">
@@ -220,7 +220,7 @@ $(document).ready(function() {
             <span class="keyword indention">Before</span>
                           <span class="location name">HooksClass.setUp()</span>
                         
-  <span class="lead-duration duration">8.561</span>
+  <span class="lead-duration duration">7.632</span>
 
           </div>
 
@@ -237,9 +237,9 @@ $(document).ready(function() {
 
     
 <div class="steps inner-level">
-    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-3">
+    <div data-toggle="collapse" class=" collapsable-control" data-target="#steps-3">
     
-<div class="brief passed">
+<div class="brief failed">
   <span class="keyword indention">Steps</span>
   <span class="name"></span>
   
@@ -249,14 +249,14 @@ $(document).ready(function() {
 
   </div>
 
-  <div id="steps-3" class="inner-level collapse collapsable-details ">
+  <div id="steps-3" class="inner-level collapse collapsable-details  in ">
           <div class="step">
         
 <div class="brief passed">
   <span class="keyword indention">When</span>
   <span class="name">Copy the <span class="argument">&quot;standard_user&quot;</span> username and password</span>
   
-  <span class="lead-duration duration">0.409</span>
+  <span class="lead-duration duration">0.362</span>
 
 </div>
 
@@ -280,9 +280,9 @@ $(document).ready(function() {
         
 <div class="brief passed">
   <span class="keyword indention">Then</span>
-  <span class="name">Verify that correct username and password and entered</span>
+  <span class="name">Verify that correct username and password entered</span>
   
-  <span class="lead-duration duration">0.122</span>
+  <span class="lead-duration duration">0.140</span>
 
 </div>
 
@@ -308,59 +308,7 @@ $(document).ready(function() {
   <span class="keyword indention">When</span>
   <span class="name">Click on <span class="argument">&quot;Login&quot;</span> button</span>
   
-  <span class="lead-duration duration">0.103</span>
-
-</div>
-
-        
-
-
-        
-
-
-        
-        
-
-        
-        
-  
-        
-
-
-      </div>
-          <div class="step">
-        
-<div class="brief passed">
-  <span class="keyword indention">When</span>
-  <span class="name">Click on <span class="argument">&quot;Sort&quot;</span> button</span>
-  
-  <span class="lead-duration duration">0.032</span>
-
-</div>
-
-        
-
-
-        
-
-
-        
-        
-
-        
-        
-  
-        
-
-
-      </div>
-          <div class="step">
-        
-<div class="brief passed">
-  <span class="keyword indention">And</span>
-  <span class="name">Select <span class="argument">&quot;Price (low to high)&quot;</span> from sort dropdown</span>
-  
-  <span class="lead-duration duration">0.186</span>
+  <span class="lead-duration duration">0.144</span>
 
 </div>
 
@@ -384,9 +332,9 @@ $(document).ready(function() {
         
 <div class="brief passed">
   <span class="keyword indention">Then</span>
-  <span class="name">Verify products are sorted <span class="argument">&quot;Price (low to high)&quot;</span></span>
+  <span class="name">Verify user is navigated to products page</span>
   
-  <span class="lead-duration duration">0.511</span>
+  <span class="lead-duration duration">0.050</span>
 
 </div>
 
@@ -394,6 +342,91 @@ $(document).ready(function() {
 
 
         
+
+
+        
+        
+
+        
+        
+  
+        
+
+
+      </div>
+          <div class="step">
+        
+<div class="brief failed">
+  <span class="keyword indention">When</span>
+  <span class="name">Take screen Shot and compare UI elements aligned correctly</span>
+  
+  <span class="lead-duration duration">0.968</span>
+
+</div>
+
+        
+
+
+        
+
+  <div class="inner-level">
+    <div class="message indention">
+      <div data-toggle="collapse" class=" collapsable-control" data-target="#msg-4">
+          <a>java.lang.NoClassDefFoundError:</a>
+      </div>
+      <div id="msg-4" class="collapse collapsable-details  in ">
+        <pre>java.lang.NoClassDefFoundError: ru/yandex/qatools/ashot/comparison/ImageDiffer
+	at org.step.LoginPage.take_screen_Shot_and_compare_UI_elements_aligned_correctly(LoginPage.java:825)
+	at &#10045;.Take screen Shot and compare UI elements aligned correctly(file:src/test/resources/Login.feature:21)
+Caused by: java.lang.ClassNotFoundException: ru.yandex.qatools.ashot.comparison.ImageDiffer
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.step.LoginPage.take_screen_Shot_and_compare_UI_elements_aligned_correctly(LoginPage.java:825)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at cucumber.runtime.Utils$1.call(Utils.java:26)
+	at cucumber.runtime.Timeout.timeout(Timeout.java:16)
+	at cucumber.runtime.Utils.invoke(Utils.java:20)
+	at cucumber.runtime.java.JavaStepDefinition.execute(JavaStepDefinition.java:57)
+	at cucumber.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:50)
+	at cucumber.runner.TestStep.executeStep(TestStep.java:65)
+	at cucumber.runner.TestStep.run(TestStep.java:50)
+	at cucumber.runner.PickleStepTestStep.run(PickleStepTestStep.java:43)
+	at cucumber.runner.TestCase.run(TestCase.java:46)
+	at cucumber.runner.Runner.runPickle(Runner.java:50)
+	at io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:146)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:68)
+	at io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:23)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:144)
+	at io.cucumber.junit.Cucumber.runChild(Cucumber.java:65)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:174)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)
+</pre>
+      </div>
+    </div>
+  </div>
 
 
         
@@ -413,7 +446,7 @@ $(document).ready(function() {
     
 
   <div class="inner-level hooks-element-after">
-        <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-4">
+        <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-5">
       
 <div class="brief passed">
   <span class="keyword indention">Hooks</span>
@@ -425,13 +458,13 @@ $(document).ready(function() {
 
     </div>
 
-    <div id="after-4" class="inner-level collapse collapsable-details ">
+    <div id="after-5" class="inner-level collapse collapsable-details ">
               <div class="hook">
           <div class="brief passed">
             <span class="keyword indention">After</span>
                           <span class="location name">HooksClass.tearDown(Scenario)</span>
                         
-  <span class="lead-duration duration">0.000</span>
+  <span class="lead-duration duration">1.192</span>
 
           </div>
 
@@ -440,6 +473,19 @@ $(document).ready(function() {
           
                     
           
+    <div class="embeddings inner-level">
+                    <div class="embedding indention">
+        <div data-toggle="collapse" data-target="#embedding-6" class="collapsable-control">
+      <a>Attachment 1 (images/png)</a>
+      <a href="embeddings/embedding_672443418.unknown" download target="_blank">
+        <span class="download-button glyphicon glyphicon-download-alt"></span>
+      </a>
+    </div>
+    <div id="embedding-6" class="collapse collapsable-details ">
+        <pre class="embedding-content">This file cannot be displayed. Use download button to get the content as file.</pre>
+    </div>
+  </div>
+            </div>
   
         </div>
           </div>
